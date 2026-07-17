@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet Mature Singles & Hot Dates Nearby</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+        
+        :root {
+            --primary: #e91e63;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a0033, #330066);
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: rgba(0,0,0,0.8);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        
+        .hero {
+            padding-top: 100px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(26,0,51,0.85));
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #ff9800;
+            color: #000;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.4);
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(233, 30, 99, 0.6);
+        }
+        
+        .geo-info {
+            margin-top: 2rem;
+            padding: 15px 25px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .offers {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .offer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+            gap: 30px;
+        }
+        
+        .offer-card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .offer-card:hover {
+            transform: translateY(-15px);
+        }
+        
+        .offer-header {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .pl-flag {
+            background: linear-gradient(90deg, #fff 33%, #dc143c 33%, #dc143c 66%, #fff 66%);
+        }
+        
+        .uk-flag {
+            background: linear-gradient(#012169 33%, #fff 33%, #fff 66%, #c8102e 66%);
+        }
+        
+        .offer-content {
+            padding: 30px;
+        }
+        
+        .offer-title {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+        
+        .age-badge {
+            background: #4caf50;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .features {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .features li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .trust {
+            background: rgba(0,0,0,0.6);
+            padding: 60px 2rem;
+            text-align: center;
+        }
+        
+        footer {
+            background: #0a0014;
+            padding: 40px 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <div class="logo">MatureFlirt</div>
+            <div style="color: #ccc; font-size: 1.1rem;">18+ Only • Discreet Dating</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">🔥 #1 Adult Dating Platform</div>
+            <h1>Find Real Connections<br>That Match Your Desires</h1>
+            <p class="subtitle">Whether you're looking for mature romance or exciting casual hookups — we've got the perfect match waiting for you.</p>
+            
+            <div id="main-cta">
+                <button onclick="detectAndRedirect()" class="cta-button">
+                    <i class="fas fa-heart"></i> Start Flirting Now →
+                </button>
+            </div>
+            
+            <div class="geo-info">
+                <i class="fas fa-location-dot"></i>
+                <span id="location-text">Detecting your location...</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="offers">
+        <h2 class="section-title">Choose Your Destination</h2>
+        
+        <div class="offer-grid">
+            <!-- Poland Offer -->
+            <div class="offer-card">
+                <div class="offer-header pl-flag"></div>
+                <div class="offer-content">
+                    <div class="age-badge">60+ Mature Women</div>
+                    <h3 class="offer-title">FlirtWithGranny 60+ <span style="color:#ff9800;">🇵🇱 Poland</span></h3>
+                    <p><strong>Connect with warm, experienced Polish grannies</strong> who know what they want.</p>
+                    
+                    <ul class="features">
+                        <li><i class="fas fa-check-circle" style="color:#4caf50"></i> Real mature women 60+</li>
+                        <li><i class="fas fa-check-circle" style="color:#4caf50"></i> Local Polish singles</li>
+                        <li><i class="fas fa-check-circle" style="color:#4caf50"></i> Discreet & private chat</li>
+                        <li><i class="fas fa-check-circle" style="color:#4caf50"></i> Instant messaging</li>
+                    </ul>
+                    
+                    <a href="https://safeoffers.pro/a/kRmLwt5L78TJMq0" target="_blank" class="cta-button" style="font-size:1.1rem; padding:14px 32px; width:100%; text-align:center; display:block;">
+                        Join Polish Grannies →
+                    </a>
+                </div>
+            </div>
+
+            <!-- UK Offer -->
+            <div class="offer-card">
+                <div class="offer-header uk-flag"></div>
+                <div class="offer-content">
+                    <div class="age-badge">Casual & Fun</div>
+                    <h3 class="offer-title">Meet-n-Hook <span style="color:#ff9800;">🇬🇧 United Kingdom</span></h3>
+                    <p><strong>Hot local hookups & casual dates</strong> with open-minded singles across the UK.</p>
+                    
+                    <ul class="features">
+                        <li><i class="fas fa-check-circle" style="color:#4caf50"></i> Real people nearby</li>
+                        <li><i class="fas fa-check-circle" style="color:#4caf50"></i> Quick & easy matches</li>
+                        <li><i class="fas fa-check-circle" style="color:#4caf50"></i> No strings fun</li>
+                        <li><i class="fas fa-check-circle" style="color:#4caf50"></i> Active UK community</li>
+                    </ul>
+                    
+                    <a href="https://safeoffers.pro/a/wpBwEUyXYLc1M2Q" target="_blank" class="cta-button" style="font-size:1.1rem; padding:14px 32px; width:100%; text-align:center; display:block;">
+                        Find UK Matches →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust">
+        <h2 style="margin-bottom: 2rem;">Why Thousands Choose Us Daily</h2>
+        <div style="display: flex; justify-content: center; gap: 60px; flex-wrap: wrap;">
+            <div style="text-align:center">
+                <h3 style="font-size:2.5rem; color:#4caf50">100k+</h3>
+                <p>Active Members</p>
+            </div>
+            <div style="text-align:center">
+                <h3 style="font-size:2.5rem; color:#4caf50">24/7</h3>
+                <p>Support</p>
+            </div>
+            <div style="text-align:center">
+                <h3 style="font-size:2.5rem; color:#4caf50">98%</h3>
+                <p>Success Rate</p>
+            </div>
+        </div>
+        <p style="margin-top: 40px; max-width: 700px; margin-left:auto; margin-right:auto; opacity:0.9;">
+            <em>18+ Only. For entertainment purposes. Please practice safe and responsible dating.</em>
+        </p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 MatureFlirt • All rights reserved • <a href="#" style="color:#ff9800">Privacy</a> • <a href="#" style="color:#ff9800">Terms</a></p>
+    </footer>
+
+    <script>
+        // Simple IP-based country detection (using free API)
+        async function detectCountry() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                const country = data.country_code;
+                
+                document.getElementById('location-text').innerHTML = 
+                    `📍 Detected: ${data.country_name || 'Your Country'}`;
+                
+                // Auto highlight the relevant offer
+                if (country === 'PL') {
+                    document.getElementById('location-text').innerHTML += ' <strong>(Poland - Recommended)</strong>';
+                } else if (country === 'GB' || country === 'UK') {
+                    document.getElementById('location-text').innerHTML += ' <strong>(UK - Recommended)</strong>';
+                }
+                
+            } catch(e) {
+                document.getElementById('location-text').textContent = 'Location detection unavailable';
+            }
+        }
+        
+        function detectAndRedirect() {
+            // Try to auto-redirect based on country, fallback to showing both
+            detectCountry().then(() => {
+                // You can add more advanced logic here if needed
+                alert("Choose the offer that matches your country for best results! 🇵🇱 or 🇬🇧");
+            });
+        }
+        
+        // Initialize
+        window.onload = function() {
+            detectCountry();
+        };
+    </script>
+</body>
+</html>
